@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<!-- axios CDN -->
+		<script src="http://unpkg.com/axios/dist/axios.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/code.js" type="text/javascript" charset="utf-8" defer="defer"></script>
+		<script src="js/iscroll.js"></script>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="main">
+				<div id="nav">
+					<img src="img/162303413685758.png">
+					<input v-model="musicName" type="text" placeholder="请输入想听的歌曲" @keyup.enter="search()" />
+					<img @click="search()" src="img/zoom.png" />
+				</div>
+				<div id="content">
+					<!-- 歌曲清单 -->
+					<div id="scrollbar" class="list" data-rsssl=1 onload="loaded()">
+						<ul>
+							<li @dblclick="playMusic(music.id)" v-for="music in musicArr">
+								{{music.name}}--{{music.artists[0].name}}
+							</li>
+						</ul>
+					</div>
+					<!-- 播放动画 -->
+					<div class="picture" class="player_con">
+						<img src="img/disc.png" class="disc autoRotate " :class="{playing: playingTag}" >
+						<img src="img/player_bar.png" class="play_bar " :class="{playing: playingTag}">
+						<img id="rotate" v-bind:src="cover" class="cover autoRotate" :class="{playing: playingTag}">
+					</div>
+					<!-- 用户评论 -->
+					<div class="comment">
+						<dl v-for="music in comments">
+							<dt><img v-bind:src="music.user.avatarUrl"></dt>
+							<dd>{{music.user.nikename}}</dd>
+							<dd>{{music.content}}</dd>
+						</dl>
+					</div>
+				</div>
+				<div id="audio">
+					<audio controls :src="musicSrc" autoplay="autoplay" @play='toplay' @pause='toPause'>
+
+					</audio>
+				</div>
+			</div>
+		</div>
+
+	</body>
+</html>

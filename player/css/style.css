@@ -1,0 +1,233 @@
+#wrap {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: url(../img/bg.jpg) no-repeat;
+
+	/* display: flex;
+	justify-content: center;
+	align-items: center; */
+}
+
+#main {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	width: 800px;
+	height: 544px;
+	margin-left: -400px;
+	margin-top: -272px;
+}
+
+/* 导航栏 */
+#nav {
+	display: flex;
+	background-color: rgba(255, 39, 227, 0.3);
+	width: 100%;
+	height: 60px;
+	justify-content: space-around;
+	align-items: center;
+}
+
+#nav img:nth-child(1) {
+	position: absolute;
+	left: 20px;
+	height: 90px;
+}
+
+#nav input {
+	position: absolute;
+	right: 20px;
+	border-radius: 20px;
+	height: 34px;
+	width: 296px;
+	outline: none;
+	border: none;
+	text-indent: 1em;
+
+}
+
+#nav img:nth-child(3) {
+	position: absolute;
+	right: 35px;
+}
+
+/* 歌曲主体 */
+#content {
+	height: 435px;
+	display: flex;
+	background-color: rgba(255, 156, 221, 0.3);
+}
+
+/* 左 */
+.list {
+	width: 200px;
+	padding: 10px;
+	background: url(../img/line.png) right center no-repeat;
+}
+
+@font-face {
+	font-family: ttf;
+	src: url(../fonts/1.TTF);
+}
+
+.list {
+	overflow: hidden;
+}
+
+.list ul {
+	overflow: scroll;
+	height: 400px;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+
+/* 隐藏滚动条,火狐不生效 */
+::-webkit-scrollbar {
+	width: 0;
+}
+
+.list li {
+	list-style: none;
+	width: 170px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	line-height: 30px;
+	position: relative;
+	right: 40px;
+	font-family: ttf;
+}
+
+.list li:hover {
+	background-color: #797a9e;
+}
+
+/* 中 */
+/* 动画 */
+@keyframes rote {
+	from {
+		transform: rotateZ(0deg);
+	}
+
+	to {
+		transform: rotateZ(360deg);
+	}
+}
+
+/* 旋转的类名 */
+.autoRotate {
+	animation-name: rote;
+	animation-iteration-count: infinite;
+	animation-play-state: paused;
+	animation-timing-function: linear;
+	animation-duration: 5s;
+}
+
+/* 是否正在播放 */
+.playing {
+	animation-play-state: running;
+}
+
+.play_bar {
+	position: absolute;
+	left: 200px;
+	top: -10px;
+	z-index: 10;
+	transform: rotate(-25deg);
+	transform-origin: 12px 12px;
+	transition: 1s;
+}
+
+/* 播放杆 转回去 */
+.play_bar.playing {
+	transform: rotate(0);
+}
+
+/* Vue动画类 */
+.list-enter-active,
+.list-leave-active {
+	transition: all 1s;
+}
+
+.list-enter,
+.list-leave-to {
+	opacity: 0;
+	transform: translateY(30px);
+}
+
+/* ------------------- */
+.picture {
+	width: 400px;
+	position: relative;
+}
+
+.disc {
+	position: absolute;
+	left: 73px;
+	top: 60px;
+	z-index: 9;/* 显示在封面图之上,覆盖 */
+}
+
+.cover {
+	position: absolute;
+	left: 125px;
+	top: 112px;
+	width: 150px;
+	height: 150px;
+	border-radius: 75px;
+	z-index: 8;
+}
+
+/* .picture img:nth-child(1) {
+	position: absolute;
+	left: 73px;
+	top: 60px;
+}
+ */
+/* .picture img:nth-child(2) {
+	position: absolute;
+	left: 260px;
+} */
+
+/* .picture img:nth-child(3) {
+	border-radius: 50%;
+	position: absolute;
+	width: 140px;
+	top: 117px;
+	left: 131px;
+} */
+
+/* 右 */
+.comment {
+	width: 200px;
+	padding: 10px;
+	background: url(../img/line.png) left center no-repeat;
+	overflow: scroll;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+.comment dd {
+	font-family: ttf;
+}
+
+.comment img {
+	width: 36px;
+	height: 36px;
+}
+
+/* 皤放器栏 */
+#audio {
+	width: 100%;
+	height: 40px;
+	outline: none;
+}
+
+audio {
+	width: 100%;
+	display: block;
+	background-color: aliceblue;
+
+}
